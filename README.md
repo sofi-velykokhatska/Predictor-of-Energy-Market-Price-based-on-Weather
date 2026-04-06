@@ -283,6 +283,25 @@ Deep learning models were considered but excluded for several well-reasoned grou
 
 ---
 
+## Train / Validation / Test Split
+
+The dataset was split chronologically into three non-overlapping periods:
+
+| Set | Period | Size | Purpose |
+|-----|--------|------|---------|
+| Train | 2019-2022 | ~35,000 hours | Model learns normal market behavior and crisis period |
+| Validation | 2023 | ~8,760 hours | Feature selection, model comparison, hyperparameter tuning |
+| Test | 2024 | ~8,784 hours | Final evaluation on completely unseen data |
+
+The split dates were chosen based on domain knowledge of the German energy crisis timeline rather than to maximize reported performance. Training data covers both the pre-crisis baseline (2019-2020) and the crisis period (2021-2022), ensuring the model is exposed to the full range of price regimes present in the data. Validation falls on 2023 - the crisis recovery year - which represents a genuinely new price regime the model has not been trained on. Test falls on 2024, when prices had largely normalized, providing an evaluation on stable post-crisis market conditions.
+
+Random splitting was explicitly avoided. In time series forecasting, randomly assigning observations to train and test sets would mix future data into the training period, allowing the model to learn from prices it should not have access to at prediction time. All splits respect strict chronological order.
+
+### Limitation
+
+The strict separation between validation and test was not fully maintained in this project. Both 2023 and 2024 results were monitored during development. This was a pragmatic decision driven by the unusual nature of the data - the 2021-2023 energy crisis created a structural break so severe that both post-crisis years were needed to confirm the model worked on both years. In a production forecasting system, strict test set isolation would be enforced from the outset.
+
+
 ## Sprints and Discoveries
 
 This project followed the CRISP-DM (Cross-Industry Standard Process for Data Mining) methodology across two iterative sprints. Each sprint produced findings that directly motivated the design of the next iteration.
