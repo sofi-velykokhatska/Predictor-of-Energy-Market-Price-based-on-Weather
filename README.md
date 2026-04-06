@@ -33,7 +33,7 @@ pip install pandas numpy matplotlib seaborn scikit-learn xgboost
 |------|--------|-------------|
 | `Energy_Day-ahead_prices_Hour.csv` | SMARD.de | Hourly DE-LU day-ahead prices 2019-2024 |
 | `Weather_open-meteo.csv` | Open-Meteo | Hourly weather data, central Germany |
-| `ICE_Dutch_TTF_Natural_Gas_Futures_Historical_Data.csv` | Investing.com | Daily TTF gas prices 2019-2024 |
+| `TTF_Natural_Gas_Futures.csv` | Investing.com | Daily TTF gas prices 2019-2024 |
 
 ### Notebook Execution Order
 
